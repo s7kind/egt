@@ -1,15 +1,16 @@
-import { DM_Sans } from 'next/font/google';
+import { Roboto } from 'next/font/google';
 import Footer from '@components/Footer';
 import Header from '@components/Header';
 
-const DMSans = DM_Sans({
+const roboto = Roboto({
+  weight: ['400', '500', '700'],
   subsets: ['latin'],
   display: 'swap',
 });
 
 const Layout = ({ children }) => {
   return (
-    <div className={DMSans.className}>
+    <div className={roboto.className}>
       <Header />
       {children}
       <Footer />

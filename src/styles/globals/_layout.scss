@@ -3,9 +3,8 @@ html {
 }
 
 body {
-  font-family: $base-font-family;
   font-size: $base-font-size;
-  color: #090909;
+  color: $txt-black;
 
   &.no-scroll {
     @include for-desktop-up {
@@ -28,6 +27,6 @@ body {
   margin-right: auto;
 
   @include for-desktop-up {
-    max-width: 1432px;
+    max-width: calc(1276px + 32px);
   }
 }

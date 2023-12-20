@@ -11,7 +11,7 @@ import configs from '@configs';
 
 const App = ({ Component, pageProps: { ...pageProps } }) => {
   const { asPath, locale } = useRouter();
-  const alternateMap = { en: 'en', de: 'de', es: 'es' };
+  const alternateMap = { en: 'en' };
 
   const pathUrl = asPath === '/' ? '/' : asPath;
   const localeUrl = (l) => (l === 'en' ? '' : `/${l}`);
