@@ -1,7 +1,14 @@
 {
   "compilerOptions": {
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@components/*": ["./src/components/*"],
+      "@configs": ["./config.json"],
+      "@utils": ["./src/utils/index.js"],
+      "@errors": ["./src/errors/index.js"],
+      "@UI": ["./src/components/UI/index.js"],
+      "@reduxSlices/*": ["./src/redux/slices/*"],
+      "@hooks": ["./src/hooks/index.js"]
     }
   }
 }

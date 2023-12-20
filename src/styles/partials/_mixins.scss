@@ -1,0 +1,41 @@
+@mixin for-tablet {
+  @media (min-width: 991px) and (max-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin for-desktop-up {
+  @media (min-width: 992px) {
+    @content;
+  }
+}
+
+@mixin hover-supported {
+  @media (min-width: 992px) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+@mixin focus-visible {
+  &:focus-visible {
+    outline: 0 none;
+    box-shadow: 0 0 0 2px #000000, 0 0 0 3px #ffffff;
+    border-radius: 2px;
+  }
+}
+
+@mixin no-focus-visible {
+  &:focus-visible {
+    outline: 0 none;
+    box-shadow: none;
+  }
+}
+
+@mixin gradient-text {
+  background-image: linear-gradient(90deg, #724fff 0%, #00c2ff 100%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  box-decoration-break: clone;
+}
