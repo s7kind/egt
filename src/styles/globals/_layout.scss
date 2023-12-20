@@ -30,3 +30,52 @@ body {
     max-width: calc(1276px + 32px);
   }
 }
+
+.button {
+  &__underline {
+    display: inline-block;
+    color: $txt-orange;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+    position: relative;
+    padding-right: 18px;
+
+    &:hover {
+      &::after {
+        transform: translateY(-50%) translateX(4px);
+      }
+
+      &::before {
+        width: calc(100% - 18px);
+      }
+    }
+
+    &::before {
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: $txt-orange;
+      content: '';
+      transition: width 0.3s ease-in-out;
+    }
+
+    &::after {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 0;
+      vertical-align: middle;
+      width: 12px;
+      height: 12px;
+      content: '';
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-image: url("data:image/svg+xml,%3Csvg width='12' height='13' viewBox='0 0 12 13' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M2.79634 12.1855C2.49682 11.8361 2.53729 11.31 2.88673 11.0105L8.14856 6.50036L2.88672 1.99021C2.53729 1.69069 2.49682 1.16461 2.79634 0.815171C3.09586 0.465734 3.62194 0.425264 3.97138 0.724784L9.67611 5.61456C10.2193 6.08017 10.2193 6.92054 9.67611 7.38615L3.97138 12.2759C3.62194 12.5754 3.09586 12.535 2.79634 12.1855Z' fill='%23F36717'/%3E%3C/svg%3E%0A");
+      transition: transform 0.3s ease-in-out;
+    }
+  }
+}

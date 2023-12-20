@@ -2,4 +2,62 @@
 @import '@/styles/partials/settings';
 
 .hero {
+  padding: 160px 0;
+  background: #f6f6f6;
+  position: relative;
+  overflow: hidden;
+
+  &Wrapper {
+    position: relative;
+    z-index: 3;
+  }
+
+  &Caption {
+    width: 100%;
+    max-width: 508px;
+  }
+
+  &Title {
+    font-size: 64px;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  &Subtitle {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: normal;
+    margin-top: 16px;
+  }
+
+  &Description {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 33px;
+    max-width: 400px;
+  }
+
+  &Link {
+    margin-top: 33px;
+  }
+
+  &Figure {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    pointer-events: none;
+    user-select: none;
+    width: 64vw;
+    height: auto;
+    z-index: 1;
+    line-height: 0;
+
+    img {
+      position: relative;
+      width: 100%;
+      height: auto;
+      line-height: 0;
+    }
+  }
 }

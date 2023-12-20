@@ -15,8 +15,11 @@ const ProductsPage = ({ translatePath }) => {
   return (
     <>
       <Head>
-        <title>{t('metaTitle')}</title>
-        <meta name="description" content={t('metaDescription')} />
+        <title>Смарт-скло це новий рівень комфорту, приватності та WOW-ефекту для бізнесу</title>
+        <meta
+          name="description"
+          content="Смарт-скло це новий рівень комфорту, приватності та WOW-ефекту для бізнесу"
+        />
       </Head>
       <section className={styles.hero}>
         <div className={cn('wrapper', [styles.heroWrapper])}>
@@ -29,7 +32,9 @@ const ProductsPage = ({ translatePath }) => {
               Smart-glass дозволяє легко регулювати прозорість скла, створювати проекційний екран та
               робити ексклюзивну багатофункціональну поверхню
             </p>
-            <Link href={'/'}>Дізнатись подробиці</Link>
+            <Link href={'/'} className={cn('button__underline', [styles.heroLink])}>
+              Дізнатись подробиці
+            </Link>
           </div>
         </div>
         <div className={styles.heroFigure}>
