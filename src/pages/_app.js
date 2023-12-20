@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import { Analytics } from '@vercel/analytics/react';
 import { appWithTranslation } from 'next-i18next';
 import Head from 'next/head';
 import { ErrorBoundary } from 'react-error-boundary';
@@ -38,6 +39,7 @@ const App = ({ Component, pageProps: { ...pageProps } }) => {
       <ErrorBoundary fallback={<ErrorHandling />}>
         <Layout>
           <Component {...pageProps} />
+          <Analytics />
         </Layout>
       </ErrorBoundary>
     </Provider>
