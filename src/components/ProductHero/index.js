@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 
 import styles from './ProductHero.module.scss';
 import cn from 'classnames';
-import { de } from 'date-fns/locale';
 
 const bounceInAnimation = (delay = 0) => ({
   initial: {

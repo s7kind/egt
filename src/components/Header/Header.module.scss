@@ -2,5 +2,272 @@
 @import '@/styles/partials/settings';
 
 .header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  padding: 6px 0 16px;
+  z-index: 999;
 
+  &Container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+  }
+
+  &Logo {
+    width: 108px;
+    height: auto;
+    margin-bottom: -6px;
+    line-height: 0;
+
+    img {
+      width: 100%;
+      height: auto;
+      line-height: 0;
+    }
+  }
+
+  &Side {
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 6px;
+  }
+
+  &Nav {
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
+
+    a {
+      margin-right: 24px;
+      color: #000;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: normal;
+      position: relative;
+
+      &::after {
+        position: absolute;
+        bottom: 0px;
+        left: 0;
+        width: 0;
+        content: '';
+        transition: width 0.3s ease-in-out;
+        height: 2px;
+        background: #000;
+        border-radius: 4px;
+      }
+
+      &:hover {
+        &::after {
+          width: 100%;
+        }
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      &.isActive {
+        padding: 4px 12px;
+        border-radius: 8px;
+        background: #000;
+        color: #fff;
+        margin-right: 32px;
+        border: 2px solid #000;
+        transition:
+          color 0.3s ease-in-out,
+          border 0.3s ease-in-out,
+          background 0.3s ease-in-out;
+
+        &:hover {
+          border: 2px solid #000;
+          color: #000;
+          background: #fff;
+        }
+
+        &::after {
+          content: none;
+        }
+      }
+    }
+  }
+}
+
+.socials {
+  display: flex;
+  gap: 8px;
+
+  a {
+    line-height: 0;
+  }
+
+  img {
+    width: 32px;
+    height: 32px;
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.burger {
+  border-radius: 8px;
+  background: #000;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  span {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  &:hover {
+    .burgerIcon {
+      transform: rotate(180deg);
+    }
+  }
+
+  &Icon {
+    margin-left: 8px;
+    width: 16px;
+    height: 16px;
+    position: relative;
+    display: block;
+    transition: all 0.3s ease-in-out;
+    transform-origin: center center;
+
+    i {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 2px;
+      background: #fff;
+      transition: all 0.3s ease-in-out;
+
+      &:nth-child(1) {
+        top: 0;
+        left: 0;
+      }
+
+      &:nth-child(2) {
+        top: 0;
+        right: 0;
+      }
+
+      &:nth-child(3) {
+        bottom: 0;
+        left: 0;
+      }
+
+      &:nth-child(4) {
+        bottom: 0;
+        right: 0;
+      }
+    }
+
+    &.isOpen {
+      transform: rotate(180deg);
+
+      i {
+        &:nth-child(1) {
+          border-radius: 16px;
+          transform: rotate(45deg);
+          left: -2px;
+          width: 20px;
+          top: 6px;
+          height: 4px;
+        }
+
+        &:nth-child(2) {
+          opacity: 0;
+        }
+
+        &:nth-child(3) {
+          border-radius: 16px;
+          transform: rotate(-45deg);
+          width: 20px;
+          bottom: 6px;
+          height: 4px;
+          left: -2px;
+        }
+
+        &:nth-child(4) {
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+  &Menu {
+    margin-left: 8px;
+    position: relative;
+  }
+
+  &Nav {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 16px);
+    padding: 24px;
+    border-radius: 8px;
+    background: #000;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+      opacity 0.3s ease-in-out,
+      visibility 0.3s ease-in-out;
+
+    &.isOpen {
+      pointer-events: all;
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  &NavLinks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+
+  &NavGroup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    a {
+      color: #fff;
+      text-align: center;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: normal;
+      margin-bottom: 16px;
+      white-space: nowrap;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &NavTitle {
+    color: #666;
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    margin-bottom: 6px;
+  }
 }

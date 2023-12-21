@@ -1,0 +1,19 @@
+{
+  "nav": {
+    "shop": "Shop",
+    "smartGlass": "Smart Glass",
+    "heatGlass": "Heat Glass",
+    "printGlass": "Print Glass",
+    "laserGlass": "Laser Glass"
+  },
+  "mainMenu": {
+    "menu": "Меню",
+    "projects": "Проєкти",
+    "aboutUs": "Про нас",
+    "blog": "Блог",
+    "contacts": "Контакти",
+    "forPartners": "Для партнерів",
+    "production": "Виробництво",
+    "contact": "Контакт"
+  }
+}
