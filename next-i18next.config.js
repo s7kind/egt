@@ -1,10 +1,9 @@
-const configs = require('./config.json');
+const path = require('path')
 
 module.exports = {
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
   },
-  localePath: './public/locales',
-  react: { useSuspense: false },
+  localePath: path.resolve('./public/static/locales')
 };
