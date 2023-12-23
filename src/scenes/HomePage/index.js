@@ -18,7 +18,7 @@ const HomePage = ({ translatePath }) => {
         <meta name="description" content={t('metaDescription')} />
       </Head>
       <section className={styles.hero}>
-        <div className={cn('wrapper', [styles.heroWrapper])}></div>
+        <div className={cn('wrapper', [styles.heroWrapper])}>........</div>
       </section>
     </>
   );
