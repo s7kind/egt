@@ -1,8 +1,9 @@
 import { Nunito_Sans, Roboto } from 'next/font/google';
 import { useTranslation } from 'next-i18next';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useOutsideClick } from '@hooks';
 
 import styles from './Header.module.scss';
 import cn from 'classnames';
@@ -23,10 +24,15 @@ const Header = () => {
   const { t } = useTranslation('header');
 
   const [isOpen, setIsOpen] = useState(false);
+  const dropDownRef = useRef(null);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
+  useOutsideClick(dropDownRef, () => {
+    setIsOpen(false);
+  });
 
   return (
     <header className={cn(nunito.className, styles.header)}>
@@ -61,7 +67,7 @@ const Header = () => {
                 <Image src="/images/call.svg" alt="call" width={32} height={32} />
               </a>
             </div>
-            <div className={styles.burgerMenu}>
+            <div className={styles.burgerMenu} ref={dropDownRef}>
               <div className={styles.burger} onClick={toggleMenu}>
                 <span>{t('mainMenu.menu')}</span>
                 <div className={cn(styles.burgerIcon, { [styles.isOpen]: isOpen })}>

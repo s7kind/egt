@@ -2,4 +2,153 @@
 @import '@/styles/partials/settings';
 
 .expense {
+  padding: 40px 0;
+
+  @include for-desktop-up {
+    padding: 80px 0;
+  }
+
+  &Title {
+    color: #000;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: normal;
+
+    @include for-desktop-up {
+      font-size: 56px;
+      line-height: 120%;
+    }
+  }
+
+  &Caption {
+    color: #aaa;
+    width: 100%;
+    max-width: 174px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 12px;
+
+    @include for-desktop-up {
+      font-size: 20px;
+      max-width: initial;
+    }
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  margin: 24px auto 0;
+  width: 100%;
+  max-width: 280px;
+
+  @include for-desktop-up {
+    max-width: initial;
+    align-items: center;
+    margin-top: 56px;
+  }
+
+  &Group {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+
+    @include for-desktop-up {
+      align-items: flex-start;
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
+
+  &GroupCallType {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 24px;
+
+    @include for-desktop-up {
+      flex-direction: row;
+      margin-top: 32px;
+    }
+  }
+
+  &Elem {
+    position: relative;
+    width: 100%;
+    max-width: 252px;
+
+    &Input {
+      width: 100%;
+      height: 48px;
+      border-radius: 8px;
+      background: #f5f5f7;
+      padding: 0 16px;
+      outline: none;
+      color: #8a8a8a;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: normal;
+      border: 1px solid #f5f5f7;
+      transition: border 0.3s ease-in-out;
+
+      &::placeholder {
+        color: #8a8a8a;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: normal;
+      }
+
+      &Error {
+        border: 1px solid red;
+      }
+    }
+
+    &Arrow {
+      position: relative;
+
+      &::after {
+        position: absolute;
+        right: 16px;
+        top: 18px;
+        content: '';
+        width: 12px;
+        height: 12px;
+        background-size: contain;
+        background-position: center;
+        pointer-events: none;
+        background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0.31446 2.79438C0.663898 2.49487 1.18998 2.53533 1.4895 2.88477L5.99964 8.14661L10.5098 2.88477C10.8093 2.53533 11.3354 2.49487 11.6848 2.79438C12.0343 3.0939 12.0747 3.61999 11.7752 3.96942L6.88544 9.67416C6.41983 10.2174 5.57946 10.2174 5.11384 9.67416L0.224072 3.96942C-0.0754464 3.61999 -0.0349784 3.0939 0.31446 2.79438Z' fill='black'/%3E%3C/svg%3E%0A");
+      }
+    }
+
+    &Select {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 100%;
+      height: 48px;
+      border-radius: 8px;
+      background: #f5f5f7;
+      border: none;
+      padding: 0 16px;
+      outline: none;
+      color: #8a8a8a;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: normal;
+      cursor: pointer;
+    }
+
+    &Error {
+      position: absolute;
+      top: calc(100% + 4px);
+      font-size: 12px;
+      color: red;
+    }
+  }
 }

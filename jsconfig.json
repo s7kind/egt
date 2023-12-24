@@ -6,10 +6,11 @@
       "@configs": ["./config.json"],
       "@utils": ["./src/utils/index.js"],
       "@errors": ["./src/errors/index.js"],
+      "@backServices/*": ["./src/back/services/*"],
+      "@backControllers": ["./src/back/controllers/index.js"],
       "@UI": ["./src/components/UI/index.js"],
       "@reduxSlices/*": ["./src/redux/slices/*"],
-      "@hooks": ["./src/hooks/index.js"],
-      "@globalStyles": ["./src/styles/*"]
+      "@hooks": ["./src/hooks/index.js"]
     }
   }
 }

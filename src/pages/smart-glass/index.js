@@ -32,7 +32,7 @@ const SmartGlass = ({ locale }) => {
       <ProductTabs translation="smartGlass" />
       <ProjectsSection />
       <Benefits translation="smartGlass" />
-      <Expense translation="smartGlass" />
+      <Expense />
     </>
   );
 };
