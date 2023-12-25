@@ -53,6 +53,24 @@
     margin-top: 56px;
   }
 
+  &Button {
+    width: 100%;
+    max-width: fit-content;
+    margin-top: 24px;
+    padding: 13px 24px 14px 24px;
+    border-radius: 8px;
+    background: #000;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: normal;
+
+    @include for-desktop-up {
+      margin-top: 0;
+      margin-left: 36px;
+    }
+  }
+
   &Group {
     width: 100%;
     display: flex;
@@ -79,10 +97,95 @@
     }
   }
 
+  &Radio {
+    position: relative;
+    padding-left: 36px;
+    display: flex;
+    align-items: center;
+    height: 24px;
+    cursor: pointer;
+    user-select: none;
+
+    &Error {
+      position: absolute;
+      font-size: 12px;
+      color: red;
+      top: calc(100% + 4px);
+      left: 0;
+      width: 100%;
+    }
+
+    &Group {
+      position: relative;
+      display: flex;
+      gap: 12px;
+
+      @include for-desktop-up {
+        gap: 24px;
+      }
+    }
+
+    &Field {
+      position: relative;
+      width: 0;
+      height: 0;
+      overflow: hidden;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      opacity: 0;
+      visibility: hidden;
+
+      &:checked + p::after {
+        opacity: 1;
+      }
+    }
+
+    &FieldText {
+      color: #000;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+
+      &::before {
+        width: 24px;
+        height: 24px;
+        border-radius: 8px;
+        border: 1px solid #d9d9d9;
+        position: absolute;
+        top: 0;
+        left: 0;
+        content: '';
+      }
+
+      &::after {
+        top: 4px;
+        left: 4px;
+        width: 16px;
+        height: 16px;
+        border-radius: 5px;
+        background: #000;
+        position: absolute;
+        content: '';
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+      }
+
+      @include for-desktop-up {
+        font-size: 16px;
+      }
+    }
+  }
+
   &Elem {
     position: relative;
     width: 100%;
-    max-width: 252px;
+    max-width: 280px;
+
+    @include for-desktop-up {
+      max-width: 252px;
+    }
 
     &Input {
       width: 100%;
@@ -134,7 +237,7 @@
       height: 48px;
       border-radius: 8px;
       background: #f5f5f7;
-      border: none;
+      border: 1px solid #f5f5f7;
       padding: 0 16px;
       outline: none;
       color: #8a8a8a;
@@ -142,6 +245,11 @@
       font-weight: 400;
       line-height: normal;
       cursor: pointer;
+      transition: border 0.3s ease-in-out;
+
+      &Error {
+        border: 1px solid red;
+      }
     }
 
     &Error {
@@ -150,5 +258,17 @@
       font-size: 12px;
       color: red;
     }
+  }
+}
+
+.status {
+  margin-top: 10px;
+
+  &Success {
+    color: green;
+  }
+
+  &Error {
+    color: red;
   }
 }

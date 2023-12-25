@@ -5,24 +5,26 @@ import * as Yup from 'yup';
 
 import styles from './Expense.module.scss';
 import cn from 'classnames';
+import { set } from 'date-fns';
 
 const Expense = () => {
   const { t } = useTranslation(`common`);
-  const [modalVisible, setModalVisible] = useState({ status: 'success', visible: false });
+  const [status, setStatus] = useState('');
   const [isLoad, setIsLoad] = useState(false);
+  const restUrl = '';
 
   const phoneRegExp =
-    /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+    /^(\+{0,})(\d{0,})([(]{1}\d{1,3}[)]{0,}){0,}(\s?\d+|\+\d{2,3}\s{1}\d+|\d+){1}[\s|-]?\d+([\s|-]?\d+){1,2}(\s){0,}$/gm;
 
   const initialValues = {
-    name: '',
+    fullName: '',
     phone: '',
     type: '',
     callType: '',
   };
 
   const validationSchema = Yup.object().shape({
-    name: Yup.string().required(t('form.required')),
+    fullName: Yup.string().required(t('form.required')),
     phone: Yup.string().required(t('form.required')).matches(phoneRegExp, t('form.phoneValid')),
     type: Yup.string().required(t('form.required')),
     callType: Yup.string().required(t('form.required')),
@@ -32,29 +34,40 @@ const Expense = () => {
     try {
       setIsLoad(true);
 
-      const response = await fetch('/api/forecast', {
+      const formData = {
+        ...values,
+        form_id: 21,
+      };
+
+      const response = await fetch(restUrl, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json; charset=utf-8',
         },
         body: JSON.stringify(values),
       });
 
+      console.log(values);
+
       if (!response.ok) {
         throw new Error('Server error');
+        setStatus('error');
       }
 
-      setModalVisible({ status: 'success', visible: true });
+      setStatus('success');
       resetForm();
     } catch (error) {
       console.error('Submission error', error);
+      setStatus('error');
       setIsLoad(false);
-      setModalVisible({ status: 'error', visible: true });
-      setErrors({ submit: 'Failed to submit' });
+      setModalVisible('error');
     }
 
     setIsLoad(false);
     setSubmitting(false);
+    setTimeout(() => {
+      setStatus('');
+    }, 3000);
   };
 
   return (
@@ -68,17 +81,17 @@ const Expense = () => {
           onSubmit={handleSubmit}
           validationSchema={validationSchema}
         >
-          {({ isSubmitting, errors, touched, values, setFieldValue }) => {
+          {({ errors, touched }) => {
             return (
               <Form className={styles.form}>
                 <div className={styles.formGroup}>
                   <div className={styles.formElem}>
                     <Field
                       type="text"
-                      name="name"
+                      name="fullName"
                       className={cn(
                         styles.formElemInput,
-                        errors.name && touched.name ? styles.formElemInputError : '',
+                        errors.fullName && touched.fullName ? styles.formElemInputError : '',
                       )}
                       placeholder={t('form.name')}
                     />
@@ -100,34 +113,65 @@ const Expense = () => {
                       name="type"
                       className={cn(
                         styles.formElemSelect,
-                        errors.type && touched.type ? styles.formElemInputError : '',
+                        errors.type && touched.type ? styles.formElemSelectError : '',
                       )}
-                      placeholder={t('form.type')}
                     >
-                      <option value="red">Red</option>
-                      <option value="green">Green</option>
-                      <option value="blue">Blue</option>
+                      <option value="" disabled selected>
+                        {t('form.type')}
+                      </option>
+                      <option value="Smart Glass">Smart Glass</option>
+                      <option value="Heat Glass">Heat Glass</option>
+                      <option value="Print Glass">Print Glass</option>
+                      <option value="Laser Glass">Laser Glass</option>
                     </Field>
                   </div>
                 </div>
                 <div className={styles.formGroupCallType}>
-                  <div role="group" aria-labelledby="callType">
-                    <label>
-                      <Field type="radio" name="callType" value={t('form.call')} />
-                      {t('form.call')}
+                  <div className={styles.formRadioGroup} role="group" aria-labelledby="callType">
+                    <label className={styles.formRadio}>
+                      <Field
+                        className={styles.formRadioField}
+                        type="radio"
+                        name="callType"
+                        value={t('form.call')}
+                      />
+                      <p className={styles.formRadioFieldText}> {t('form.call')}</p>
                     </label>
-                    <label>
-                      <Field type="radio" name="callType" value={t('form.telegram')} />
-                      {t('form.telegram')}
+                    <label className={styles.formRadio}>
+                      <Field
+                        className={styles.formRadioField}
+                        type="radio"
+                        name="callType"
+                        value={t('form.telegram')}
+                      />
+                      <p className={styles.formRadioFieldText}> {t('form.telegram')}</p>
                     </label>
-                    <label>
-                      <Field type="radio" name="callType" value={t('form.viber')} />
-                      {t('form.viber')}
+                    <label className={styles.formRadio}>
+                      <Field
+                        className={styles.formRadioField}
+                        type="radio"
+                        name="callType"
+                        value={t('form.viber')}
+                      />
+                      <p className={styles.formRadioFieldText}> {t('form.viber')}</p>
                     </label>
+                    {errors.callType && touched.callType ? (
+                      <p className={styles.formRadioError}>Оберіть тип звязку</p>
+                    ) : null}
                   </div>
 
-                  <button type="submit">{t('form.submit')}</button>
+                  <button className={styles.formButton} type="submit">
+                    {t('form.submit')}
+                  </button>
                 </div>
+                {status === 'success' && (
+                  <p className={cn(styles.status, styles.statusSuccess)}>
+                    Ваша заявка успішно відправлена
+                  </p>
+                )}
+                {status === 'error' && (
+                  <p className={cn(styles.status, styles.statusError)}>Помилка, спробуйте ще раз</p>
+                )}
               </Form>
             );
           }}
