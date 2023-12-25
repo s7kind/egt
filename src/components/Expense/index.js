@@ -1,6 +1,6 @@
 import { useTranslation } from 'next-i18next';
 import { Formik, Form, Field } from 'formik';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import * as Yup from 'yup';
 
 import styles from './Expense.module.scss';
@@ -65,10 +65,17 @@ const Expense = () => {
 
     setIsLoad(false);
     setSubmitting(false);
-    setTimeout(() => {
-      setStatus('');
-    }, 3000);
   };
+
+  useEffect(() => {
+    if (status !== '') {
+      const timer = setTimeout(() => {
+        setStatus('');
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [status]);
 
   return (
     <section className={styles.expense}>
@@ -115,8 +122,9 @@ const Expense = () => {
                         styles.formElemSelect,
                         errors.type && touched.type ? styles.formElemSelectError : '',
                       )}
+                      value={t('form.type')}
                     >
-                      <option value="" disabled selected>
+                      <option value={t('form.type')} disabled>
                         {t('form.type')}
                       </option>
                       <option value="Smart Glass">Smart Glass</option>
