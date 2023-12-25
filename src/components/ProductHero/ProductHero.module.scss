@@ -2,10 +2,14 @@
 @import '@/styles/partials/settings';
 
 .hero {
-  padding: 160px 0;
+  padding: 32px 0 0;
   background: #f6f6f6;
   position: relative;
   overflow: hidden;
+
+  @include for-desktop-up {
+    padding: 160px 0;
+  }
 
   &Wrapper {
     position: relative;
@@ -14,44 +18,89 @@
 
   &Caption {
     width: 100%;
-    max-width: 508px;
+    max-width: 284px;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include for-desktop-up {
+      max-width: 508px;
+      margin-left: initial;
+    }
   }
 
   &Title {
-    font-size: 64px;
+    font-size: 40px;
     font-weight: 700;
     line-height: normal;
+    text-align: center;
+
+    @include for-desktop-up {
+      font-size: 64px;
+      text-align: left;
+    }
   }
 
   &Subtitle {
-    font-size: 20px;
     font-weight: 500;
     line-height: normal;
     margin-top: 16px;
+    font-size: 18px;
+    text-align: center;
+
+    @include for-desktop-up {
+      font-size: 20px;
+      text-align: left;
+    }
   }
 
   &Description {
-    font-size: 16px;
     font-weight: 400;
     line-height: normal;
-    margin-top: 33px;
+    margin-top: 24px;
     max-width: 400px;
+    text-align: center;
+    font-size: 14px;
+
+    @include for-desktop-up {
+      font-size: 16px;
+      margin-top: 33px;
+      text-align: left;
+    }
+  }
+
+  &Action {
+    display: flex;
+    justify-content: center;
+
+    @include for-desktop-up {
+      justify-content: flex-start;
+    }
   }
 
   &Link {
-    margin-top: 33px;
+    margin-top: 24px;
+
+    @include for-desktop-up {
+      margin-top: 33px;
+    }
   }
 
   &Figure {
-    position: absolute;
-    bottom: 0;
-    right: 0;
+    margin-top: 32px;
+    width: 100%;
     pointer-events: none;
     user-select: none;
-    width: 64vw;
-    height: auto;
     z-index: 1;
     line-height: 0;
+
+    @include for-desktop-up {
+      margin-top: 0;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 64vw;
+      height: auto;
+    }
 
     img {
       position: relative;

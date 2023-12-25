@@ -61,5 +61,26 @@
         "caption": "Рівень шумоізоляції: 35 дБ. <br> УФ-захист: 95-98%"
       }
     ]
+  },
+  "using": {
+    "title": "Склопакети Smart Glass використовують",
+    "list": [
+      {
+        "image": "/images/smart-glass/using-1.png",
+        "title": "Як штори/жалюзі"
+      },
+      {
+        "image": "/images/smart-glass/using-2.png",
+        "title": "Як елемент оздоблення або проекційний екран"
+      },
+      {
+        "image": "/images/smart-glass/using-3.png",
+        "title": "Як вітрина"
+      },
+      {
+        "image": "/images/smart-glass/using-4.png",
+        "title": "Для зонування простору"
+      }
+    ]
   }
 }

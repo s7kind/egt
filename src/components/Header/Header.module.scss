@@ -6,9 +6,13 @@
   top: 0;
   left: 0;
   width: 100%;
-  background: #fff;
+  background: #F6F6F6;
   padding: 6px 0 16px;
   z-index: 999;
+
+  @include for-desktop-up {
+    background: #fff;
+  }
 
   &Container {
     display: flex;
@@ -37,9 +41,13 @@
   }
 
   &Nav {
-    display: flex;
+    display: none;
     align-items: center;
     margin-left: 30px;
+
+    @include for-desktop-up {
+      display: flex;
+    }
 
     a {
       margin-right: 24px;
@@ -98,7 +106,7 @@
 }
 
 .socials {
-  display: flex;
+  display: none;
   gap: 8px;
 
   a {
@@ -113,6 +121,10 @@
     &:hover {
       transform: scale(1.1);
     }
+  }
+
+  @include for-desktop-up {
+    display: flex;
   }
 }
 

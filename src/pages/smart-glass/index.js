@@ -1,14 +1,15 @@
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Image from 'next/image';
 import Head from 'next/head';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
-import { motion } from 'framer-motion';
 
 import ProductHero from '@/components/ProductHero';
 import ProductTabs from '@/components/ProductTabs';
 import ProjectsSection from '@/components/ProjectsSection';
 import Benefits from '@/components/Benefits';
 import Expense from '@/components/Expense';
+import ProductUsing from '@/components/ProductUsing';
+import ProductManage from '@/components/ProductManage';
+import ProductTech from '@/components/ProductTech';
 
 export const getServerSideProps = async ({ locale }) => {
   return {
@@ -33,6 +34,9 @@ const SmartGlass = ({ locale }) => {
       <ProjectsSection />
       <Benefits translation="smartGlass" />
       <Expense />
+      <ProductUsing translation="smartGlass" />
+      <ProductManage translation="smartGlass" />
+      <ProductTech translation="smartGlass" />
     </>
   );
 };

@@ -53,12 +53,14 @@ const ProductHero = ({ translation }) => {
             viewport={{ once: true }}
           >
             <p className={styles.heroDescription}>{t('hero.description')}</p>
-            <Link
-              href={t('hero.button.link')}
-              className={cn('button__underline', [styles.heroLink])}
-            >
-              {t('hero.button.text')}
-            </Link>
+            <div className={styles.heroAction}>
+              <Link
+                href={t('hero.button.link')}
+                className={cn('button__underline', [styles.heroLink])}
+              >
+                {t('hero.button.text')}
+              </Link>
+            </div>
           </motion.div>
         </div>
       </div>

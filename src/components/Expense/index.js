@@ -143,7 +143,7 @@ const Expense = () => {
                         name="callType"
                         value={t('form.call')}
                       />
-                      <p className={styles.formRadioFieldText}> {t('form.call')}</p>
+                      <p className={styles.formRadioFieldText}>{t('form.call')}</p>
                     </label>
                     <label className={styles.formRadio}>
                       <Field
@@ -152,7 +152,7 @@ const Expense = () => {
                         name="callType"
                         value={t('form.telegram')}
                       />
-                      <p className={styles.formRadioFieldText}> {t('form.telegram')}</p>
+                      <p className={styles.formRadioFieldText}>{t('form.telegram')}</p>
                     </label>
                     <label className={styles.formRadio}>
                       <Field
@@ -161,10 +161,10 @@ const Expense = () => {
                         name="callType"
                         value={t('form.viber')}
                       />
-                      <p className={styles.formRadioFieldText}> {t('form.viber')}</p>
+                      <p className={styles.formRadioFieldText}>{t('form.viber')}</p>
                     </label>
                     {errors.callType && touched.callType ? (
-                      <p className={styles.formRadioError}>Оберіть тип звязку</p>
+                      <p className={styles.formRadioError}>{t('form.callTypeError')}</p>
                     ) : null}
                   </div>
 
@@ -173,12 +173,10 @@ const Expense = () => {
                   </button>
                 </div>
                 {status === 'success' && (
-                  <p className={cn(styles.status, styles.statusSuccess)}>
-                    Ваша заявка успішно відправлена
-                  </p>
+                  <p className={cn(styles.status, styles.statusSuccess)}>{t('form.successForm')}</p>
                 )}
                 {status === 'error' && (
-                  <p className={cn(styles.status, styles.statusError)}>Помилка, спробуйте ще раз</p>
+                  <p className={cn(styles.status, styles.statusError)}>{t('form.errorForm')}</p>
                 )}
               </Form>
             );
