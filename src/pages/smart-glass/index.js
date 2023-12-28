@@ -10,6 +10,7 @@ import Expense from '@/components/Expense';
 import ProductUsing from '@/components/ProductUsing';
 import ProductManage from '@/components/ProductManage';
 import ProductTech from '@/components/ProductTech';
+import Faq from '@/components/Faq';
 
 export const getServerSideProps = async ({ locale }) => {
   return {
@@ -37,6 +38,8 @@ const SmartGlass = ({ locale }) => {
       <ProductUsing translation="smartGlass" />
       <ProductManage translation="smartGlass" />
       <ProductTech translation="smartGlass" />
+      <Expense />
+      <Faq translation="smartGlass" />
     </>
   );
 };

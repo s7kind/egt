@@ -12,6 +12,18 @@ const ProductTech = ({ translation }) => {
     <section className={styles.tech}>
       <div className={cn('wrapper', [styles.techWrapper])}>
         <h3 className={styles.techTitle}>{t('tech.title')}</h3>
+        <div className={styles.techSection}>
+          <div className={styles.techList}>
+            <div className={styles.techListWrapper}>
+              {list.map(({ text, caption }, index) => (
+                <div className={styles.techItem} key={index}>
+                  <h4 className={styles.techItemText}>{text}</h4>
+                  <p className={styles.techItemCaption}>{caption}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
