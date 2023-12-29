@@ -1,15 +1,17 @@
 import { useTranslation } from 'next-i18next';
 import { Formik, Form, Field } from 'formik';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { Buttons, Modal } from '@UI';
+
 import * as Yup from 'yup';
 
-import styles from './Expense.module.scss';
 import cn from 'classnames';
-import { set } from 'date-fns';
+import styles from './Expense.module.scss';
 
 const Expense = () => {
   const { t } = useTranslation(`common`);
   const [status, setStatus] = useState('');
+  const [modalVisible, setModalVisible] = useState({ status: 'success', visible: false });
   const [isLoad, setIsLoad] = useState(false);
   const restUrl = '';
 
@@ -54,12 +56,12 @@ const Expense = () => {
         setStatus('error');
       }
 
-      setStatus('success');
+      setModalVisible({ status: 'success', visible: true });
       resetForm();
     } catch (error) {
       console.error('Submission error', error);
       setStatus('error');
-      setIsLoad(false);
+      setModalVisible({ status: 'error', visible: true });
       setModalVisible('error');
     }
 
@@ -67,123 +69,124 @@ const Expense = () => {
     setSubmitting(false);
   };
 
-  useEffect(() => {
-    if (status !== '') {
-      const timer = setTimeout(() => {
-        setStatus('');
-      }, 3000);
-
-      return () => clearTimeout(timer);
-    }
-  }, [status]);
-
   return (
-    <section className={styles.expense}>
-      <div className={cn('wrapper', [styles.expenseWrapper])}>
-        <h3 className={styles.expenseTitle}>{t('expense.title')}</h3>
-        <p className={styles.expenseCaption}>{t('expense.caption')}</p>
+    <>
+      <section className={styles.expense}>
+        <div className={cn('wrapper', [styles.expenseWrapper])}>
+          <h3 className={styles.expenseTitle}>{t('expense.title')}</h3>
+          <p className={styles.expenseCaption}>{t('expense.caption')}</p>
 
-        <Formik
-          initialValues={initialValues}
-          onSubmit={handleSubmit}
-          validationSchema={validationSchema}
-        >
-          {({ errors, touched }) => {
-            return (
-              <Form className={styles.form}>
-                <div className={styles.formGroup}>
-                  <div className={styles.formElem}>
-                    <Field
-                      type="text"
-                      name="fullName"
-                      className={cn(
-                        styles.formElemInput,
-                        errors.fullName && touched.fullName ? styles.formElemInputError : '',
-                      )}
-                      placeholder={t('form.name')}
-                    />
-                  </div>
-                  <div className={styles.formElem}>
-                    <Field
-                      type="text"
-                      name="phone"
-                      className={cn(
-                        styles.formElemInput,
-                        errors.phone && touched.phone ? styles.formElemInputError : '',
-                      )}
-                      placeholder={t('form.phone')}
-                    />
-                  </div>
-                  <div className={cn(styles.formElem, styles.formElemArrow)}>
-                    <Field
-                      as="select"
-                      name="type"
-                      className={cn(
-                        styles.formElemSelect,
-                        errors.type && touched.type ? styles.formElemSelectError : '',
-                      )}
-                      value={t('form.type')}
-                    >
-                      <option value={t('form.type')} disabled>
-                        {t('form.type')}
-                      </option>
-                      <option value="Smart Glass">Smart Glass</option>
-                      <option value="Heat Glass">Heat Glass</option>
-                      <option value="Print Glass">Print Glass</option>
-                      <option value="Laser Glass">Laser Glass</option>
-                    </Field>
-                  </div>
-                </div>
-                <div className={styles.formGroupCallType}>
-                  <div className={styles.formRadioGroup} role="group" aria-labelledby="callType">
-                    <label className={styles.formRadio}>
-                      <Field
-                        className={styles.formRadioField}
-                        type="radio"
-                        name="callType"
-                        value={t('form.call')}
-                      />
-                      <p className={styles.formRadioFieldText}>{t('form.call')}</p>
-                    </label>
-                    <label className={styles.formRadio}>
-                      <Field
-                        className={styles.formRadioField}
-                        type="radio"
-                        name="callType"
-                        value={t('form.telegram')}
-                      />
-                      <p className={styles.formRadioFieldText}>{t('form.telegram')}</p>
-                    </label>
-                    <label className={styles.formRadio}>
-                      <Field
-                        className={styles.formRadioField}
-                        type="radio"
-                        name="callType"
-                        value={t('form.viber')}
-                      />
-                      <p className={styles.formRadioFieldText}>{t('form.viber')}</p>
-                    </label>
-                    {errors.callType && touched.callType ? (
-                      <p className={styles.formRadioError}>{t('form.callTypeError')}</p>
-                    ) : null}
-                  </div>
+          <Formik
+            initialValues={initialValues}
+            onSubmit={handleSubmit}
+            validationSchema={validationSchema}
+          >
+            {({ errors, touched }) => {
+              const isReady = Object.keys(errors).length === 0;
 
-                  <button className={styles.formButton} type="submit">
-                    {t('form.submit')}
-                  </button>
-                </div>
-                {status === 'success' && (
-                  <p className={cn(styles.status, styles.statusSuccess)}>{t('form.successForm')}</p>
-                )}
-                {status === 'error' && (
-                  <p className={cn(styles.status, styles.statusError)}>{t('form.errorForm')}</p>
-                )}
-              </Form>
-            );
-          }}
-        </Formik>
-      </div>
-    </section>
+              return (
+                <Form className={styles.form}>
+                  <div className={styles.formGroup}>
+                    <div className={styles.formElem}>
+                      <Field
+                        type="text"
+                        name="fullName"
+                        className={cn(
+                          styles.formElemInput,
+                          errors.fullName && touched.fullName ? styles.formElemInputError : '',
+                        )}
+                        placeholder={t('form.name')}
+                      />
+                    </div>
+                    <div className={styles.formElem}>
+                      <Field
+                        type="text"
+                        name="phone"
+                        className={cn(
+                          styles.formElemInput,
+                          errors.phone && touched.phone ? styles.formElemInputError : '',
+                        )}
+                        placeholder={t('form.phone')}
+                      />
+                    </div>
+                    <div className={cn(styles.formElem, styles.formElemArrow)}>
+                      <Field
+                        as="select"
+                        name="type"
+                        className={cn(
+                          styles.formElemSelect,
+                          errors.type && touched.type ? styles.formElemSelectError : '',
+                        )}
+                        // value={''}
+                      >
+                        <option value={''} disabled>
+                          {t('form.type')}
+                        </option>
+                        <option value="Smart Glass">Smart Glass</option>
+                        <option value="Heat Glass">Heat Glass</option>
+                        <option value="Print Glass">Print Glass</option>
+                        <option value="Laser Glass">Laser Glass</option>
+                      </Field>
+                    </div>
+                  </div>
+                  <div className={styles.formGroupCallType}>
+                    <div className={styles.formRadioGroup} role="group" aria-labelledby="callType">
+                      <label className={styles.formRadio}>
+                        <Field
+                          className={styles.formRadioField}
+                          type="radio"
+                          name="callType"
+                          value={t('form.call')}
+                        />
+                        <p className={styles.formRadioFieldText}>{t('form.call')}</p>
+                      </label>
+                      <label className={styles.formRadio}>
+                        <Field
+                          className={styles.formRadioField}
+                          type="radio"
+                          name="callType"
+                          value={t('form.telegram')}
+                        />
+                        <p className={styles.formRadioFieldText}>{t('form.telegram')}</p>
+                      </label>
+                      <label className={styles.formRadio}>
+                        <Field
+                          className={styles.formRadioField}
+                          type="radio"
+                          name="callType"
+                          value={t('form.viber')}
+                        />
+                        <p className={styles.formRadioFieldText}>{t('form.viber')}</p>
+                      </label>
+                      {errors.callType && touched.callType ? (
+                        <p className={styles.formRadioError}>{t('form.callTypeError')}</p>
+                      ) : null}
+                    </div>
+
+                    <Buttons type="submit" load={isLoad} disabled={!isReady}>
+                      {t('form.submit')}
+                    </Buttons>
+                  </div>
+                  {status === 'success' && (
+                    <p className={cn(styles.status, styles.statusSuccess)}>
+                      {t('form.successForm')}
+                    </p>
+                  )}
+                  {status === 'error' && (
+                    <p className={cn(styles.status, styles.statusError)}>{t('form.errorForm')}</p>
+                  )}
+                </Form>
+              );
+            }}
+          </Formik>
+        </div>
+      </section>
+      <Modal
+        onHide={() => setModalVisible({ ...modalVisible, visible: false })}
+        visible={modalVisible['visible']}
+        status={modalVisible['status']}
+      />
+    </>
   );
 };
 

@@ -1,0 +1,29 @@
+@import '@/styles/partials/mixins';
+@import '@/styles/partials/settings';
+
+.button {
+  width: 100%;
+  min-width: 145px;
+  max-width: fit-content;
+  margin-top: 24px;
+  padding: 13px 24px 14px 24px;
+  border-radius: 8px;
+  background: #000;
+
+  @include for-desktop-up {
+    margin-top: 0;
+    margin-left: 36px;
+  }
+
+  span {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  &.disabled {
+    pointer-events: none !important;
+    opacity: 0.5 !important;
+  }
+}
