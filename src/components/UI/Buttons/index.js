@@ -27,8 +27,8 @@ const DefaultBtn = ({
     {load ? (
       <Image
         src={`/images/load.gif`}
-        width={24}
-        height={24}
+        width={16}
+        height={16}
         alt="load"
         placeholder="empty"
         className={styles['button__load']}
