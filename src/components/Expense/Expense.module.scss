@@ -79,6 +79,15 @@
     }
   }
 
+  &Btn {
+    margin-top: 24px;
+
+    @include for-desktop-up {
+      margin-top: 0;
+      margin-left: 36px;
+    }
+  }
+
   &Radio {
     position: relative;
     padding-left: 36px;

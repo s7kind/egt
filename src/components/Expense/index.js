@@ -10,7 +10,6 @@ import styles from './Expense.module.scss';
 
 const Expense = () => {
   const { t } = useTranslation(`common`);
-  const [status, setStatus] = useState('');
   const [modalVisible, setModalVisible] = useState({ status: 'success', visible: false });
   const [isLoad, setIsLoad] = useState(false);
   const restUrl = '';
@@ -46,23 +45,19 @@ const Expense = () => {
         headers: {
           'Content-Type': 'application/json; charset=utf-8',
         },
-        body: JSON.stringify(values),
+        body: JSON.stringify(formData),
       });
 
-      console.log(values);
-
       if (!response.ok) {
+        setModalVisible({ status: 'error', visible: true });
         throw new Error('Server error');
-        setStatus('error');
       }
 
       setModalVisible({ status: 'success', visible: true });
       resetForm();
     } catch (error) {
       console.error('Submission error', error);
-      setStatus('error');
       setModalVisible({ status: 'error', visible: true });
-      setModalVisible('error');
     }
 
     setIsLoad(false);
@@ -163,18 +158,15 @@ const Expense = () => {
                       ) : null}
                     </div>
 
-                    <Buttons type="submit" load={isLoad} disabled={!isReady}>
+                    <Buttons
+                      className={styles.formBtn}
+                      type="submit"
+                      load={isLoad}
+                      disabled={!isReady}
+                    >
                       {t('form.submit')}
                     </Buttons>
                   </div>
-                  {status === 'success' && (
-                    <p className={cn(styles.status, styles.statusSuccess)}>
-                      {t('form.successForm')}
-                    </p>
-                  )}
-                  {status === 'error' && (
-                    <p className={cn(styles.status, styles.statusError)}>{t('form.errorForm')}</p>
-                  )}
                 </Form>
               );
             }}

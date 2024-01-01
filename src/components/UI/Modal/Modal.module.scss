@@ -15,12 +15,14 @@
   opacity: 0;
   pointer-events: none;
   visibility: hidden;
-  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  transition:
+    opacity 0.3s ease-in-out,
+    visibility 0.3s ease-in-out;
 
   &.isActive {
-	opacity: 1;
-	pointer-events: all;
-	visibility: visible;
+    opacity: 1;
+    pointer-events: all;
+    visibility: visible;
   }
 
   &Wrapper {
@@ -53,5 +55,41 @@
     @include for-desktop-up {
       right: 16px;
     }
+  }
+
+  &Content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &Title {
+    color: #000;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: normal;
+    text-align: center;
+
+    @include for-desktop-up {
+      font-size: 48px;
+    }
+  }
+
+  &Text {
+    color: #000;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 8px;
+
+    @include for-desktop-up {
+      font-size: 18px;
+    }
+  }
+
+  &Btn {
+    margin-top: 24px;
+    min-width: 119px;
   }
 }

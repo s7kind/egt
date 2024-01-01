@@ -2,5 +2,161 @@
 @import '@/styles/partials/settings';
 
 .footer {
+  &Top {
+    padding: 12px 0 36px;
+    background: #000;
 
+    @include for-desktop-up {
+      padding: 13px 0;
+    }
+
+    &Wrapper {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      flex-wrap: wrap;
+
+      @include for-desktop-up {
+        // flex-wrap: nowrap;
+        align-items: center;
+        gap: 16px;
+      }
+    }
+  }
+
+  &Logo {
+    width: 108px;
+    height: auto;
+    order: 1;
+  }
+
+  &Btn {
+    color: #fff;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: normal;
+    border-radius: 6px;
+    border: 1px solid #fff;
+    padding: 7px 15px;
+    order: 2;
+    min-width: fit-content;
+
+    @include for-desktop-up {
+      order: 3;
+    }
+  }
+
+  &Nav {
+    width: 100%;
+    order: 3;
+    margin-top: 24px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 18px 32px;
+
+    @include for-desktop-up {
+      order: 2;
+      width: fit-content;
+      margin-top: 0;
+      justify-content: flex-start;
+    }
+
+    a {
+      color: #fff;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: normal;
+    }
+  }
+
+  &Bottom {
+    padding: 24px 0;
+
+    @include for-desktop-up {
+      padding: 15px 0;
+    }
+
+    &Wrapper {
+      padding: 0 40px;
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+
+      @include for-desktop-up {
+        padding: 0 16px;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+  }
+
+  &Social {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 24px;
+
+    @include for-desktop-up {
+      margin-top: 0;
+    }
+
+    img {
+      width: 32px;
+      height: 32px;
+    }
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include for-desktop-up {
+    flex-direction: row;
+  }
+
+  &Elem {
+    &Input {
+      width: 280px;
+      height: 48px;
+      border-radius: 8px;
+      background: #f5f5f7;
+      color: #8a8a8a;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: normal;
+      border: 1px solid #f5f5f7;
+      padding: 14px 16px;
+      outline: none;
+	  transition: all 0.3s ease-in-out;
+
+      &::placeholder {
+        color: #8a8a8a;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: normal;
+      }
+
+      &Error {
+        border: 1px solid red;
+      }
+    }
+  }
+
+  &Btn {
+    margin-top: 12px;
+
+    @include for-desktop-up {
+      margin-top: 0;
+      margin-left: 8px;
+    }
+
+    span {
+      font-size: 16px;
+    }
+  }
 }

@@ -1,0 +1,16 @@
+{
+  "nav": {
+    "smartGlass": "Smart Glass",
+    "heatGlass": "Heat Glass",
+    "printGlass": "Print Glass",
+    "laserGlass": "Laser Glass",
+    "projects": "Проєкти",
+    "production": "Виробництво",
+    "aboutUs": "Про нас",
+    "blog": "Блог",
+    "contacts": "Контакти"
+  },
+  "joinUs": "Стати партнером",
+  "phoneNumber": "Номер телефону",
+  "callMe": "Зателефонуйте мені"
+}
