@@ -25,7 +25,7 @@ const Benefits = ({ translation }) => {
   const benefits = t('benefits.list', { returnObjects: true });
 
   return (
-    <section className={styles.benefits}>
+    <section className={styles.benefits} id='benefits'>
       <div className={cn('wrapper', [styles.benefitsWrapper])}>
         <h2 className={styles.benefitsTitle}>{t('benefits.title')}</h2>
         <div className={styles.benefitsBox}>

@@ -45,6 +45,12 @@
       font-size: 20px;
     }
 
+    &.active {
+      &::after {
+        width: 100%;
+      }
+    }
+
     &::after {
       position: absolute;
       content: '';

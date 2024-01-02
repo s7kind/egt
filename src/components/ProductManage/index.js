@@ -9,7 +9,7 @@ const ProductManage = ({ translation }) => {
   const list = t('manage.list', { returnObjects: true });
 
   return (
-    <section className={styles.manage}>
+    <section className={styles.manage} id='manage'>
       <div className={cn('wrapper', [styles.manageWrapper])}>
         <h3 className={styles.manageTitle}>{t('manage.title')}</h3>
         <div className={styles.manageList}>

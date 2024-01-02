@@ -1,4 +1,5 @@
 import { useTranslation } from 'next-i18next';
+import { Link } from 'react-scroll';
 
 import styles from './ProductTabs.module.scss';
 import cn from 'classnames';
@@ -13,9 +14,18 @@ const ProductTabs = ({ translation }) => {
         <div className={styles.tabsBox}>
           {Array.isArray(tabs) &&
             tabs?.map(({ name, section }) => (
-              <p key={name} className={styles.tabsItem}>
+              <Link
+                key={name}
+                activeClass={styles.active}
+                to={section}
+                spy={true}
+                smooth={true}
+                offset={-120}
+                duration={500}
+                className={styles.tabsItem}
+              >
                 {name}
-              </p>
+              </Link>
             ))}
         </div>
       </div>

@@ -34,6 +34,12 @@
     background: var(--Gray, #f6f6f6);
     margin-top: 24px;
     overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
 
     @include for-desktop-up {
       margin-top: 40px;
@@ -90,5 +96,29 @@
     @include for-desktop-up {
       font-size: 16px;
     }
+  }
+
+  &ScrollBar {
+    width: 280px;
+    height: 6px;
+    border-radius: 8px;
+    background: #f5f5f7;
+    margin: 16px auto 0;
+    position: relative;
+    overflow: hidden;
+
+    @include for-desktop-up {
+      display: none;
+    }
+  }
+
+  &ScrollLine {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 92px;
+    height: 6px;
+    border-radius: 8px;
+    background: #000;
   }
 }

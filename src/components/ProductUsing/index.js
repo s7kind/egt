@@ -10,7 +10,7 @@ const ProductUsing = ({ translation }) => {
   const size = list.length;
 
   return (
-    <section className={styles.using}>
+    <section className={styles.using} id='using'>
       <div className={cn('wrapper', [styles.usingWrapper])}>
         <h3 className={styles.usingTitle}>{t('using.title')}</h3>
         <div className={cn(styles.usingList, { [styles.fullFirst]: size === 3 })}>

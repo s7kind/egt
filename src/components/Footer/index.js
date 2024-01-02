@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { useTranslation } from 'next-i18next';
 import { Formik, Form, Field } from 'formik';
-import { Buttons } from '@UI';
+import { Buttons, Modal } from '@UI';
 
 import * as Yup from 'yup';
 
@@ -64,82 +64,89 @@ const Footer = () => {
   };
 
   return (
-    <div className={styles.footer}>
-      <div className={styles.footerTop}>
-        <div className={cn('wrapper', [styles.footerTopWrapper])}>
-          <Image
-            className={styles.footerLogo}
-            src="/images/logo-white.svg"
-            alt="logo"
-            width={108}
-            height={65}
-          />
-          <div className={styles.footerNav}>
-            <Link href="/shop">{t('nav.smartGlass')}</Link>
-            <Link href="/shop">{t('nav.heatGlass')}</Link>
-            <Link href="/shop">{t('nav.printGlass')}</Link>
-            <Link href="/shop">{t('nav.laserGlass')}</Link>
-            <Link href="/shop">{t('nav.projects')}</Link>
-            <Link href="/shop">{t('nav.production')}</Link>
-            <Link href="/shop">{t('nav.aboutUs')}</Link>
-            <Link href="/shop">{t('nav.blog')}</Link>
-            <Link href="/shop">{t('nav.contacts')}</Link>
+    <>
+      <div className={styles.footer}>
+        <div className={styles.footerTop}>
+          <div className={cn('wrapper', [styles.footerTopWrapper])}>
+            <Image
+              className={styles.footerLogo}
+              src="/images/logo-white.svg"
+              alt="logo"
+              width={108}
+              height={65}
+            />
+            <div className={styles.footerNav}>
+              <Link href="/smart-glass">{t('nav.smartGlass')}</Link>
+              <Link href="/heat-glass">{t('nav.heatGlass')}</Link>
+              <Link href="/print-glass">{t('nav.printGlass')}</Link>
+              <Link href="/laser-glass">{t('nav.laserGlass')}</Link>
+              <Link href="/projects">{t('nav.projects')}</Link>
+              <Link href="/production">{t('nav.production')}</Link>
+              <Link href="/about">{t('nav.aboutUs')}</Link>
+              <Link href="/blog">{t('nav.blog')}</Link>
+              <Link href="/contacts">{t('nav.contacts')}</Link>
+            </div>
+            <button className={styles.footerBtn}>{t('joinUs')}</button>
           </div>
-          <button className={styles.footerBtn}>{t('joinUs')}</button>
         </div>
-      </div>
-      <div className={styles.footerBottom}>
-        <div className={cn('wrapper', [styles.footerBottomWrapper])}>
-          <div className={styles.footerSocial}>
-            <a href="https://telegram.com/">
-              <Image src="/images/telegram.svg" alt="telegram" width={32} height={32} />
-            </a>
-            <a href="https://instagram.com/">
-              <Image src="/images/instagram.svg" alt="instagram" width={32} height={32} />
-            </a>
-            <a href="https://facebook.com/">
-              <Image src="/images/facebook.svg" alt="facebook" width={32} height={32} />
-            </a>
-            <a href="tel:063 454 44 55">
-              <Image src="/images/call.svg" alt="call" width={32} height={32} />
-            </a>
-          </div>
-          <Formik
-            initialValues={initialValues}
-            onSubmit={handleSubmit}
-            validationSchema={validationSchema}
-          >
-            {({ errors, touched }) => {
-              const isReady = Object.keys(errors).length === 0;
+        <div className={styles.footerBottom}>
+          <div className={cn('wrapper', [styles.footerBottomWrapper])}>
+            <div className={styles.footerSocial}>
+              <a href="https://telegram.com/">
+                <Image src="/images/telegram.svg" alt="telegram" width={32} height={32} />
+              </a>
+              <a href="https://instagram.com/">
+                <Image src="/images/instagram.svg" alt="instagram" width={32} height={32} />
+              </a>
+              <a href="https://facebook.com/">
+                <Image src="/images/facebook.svg" alt="facebook" width={32} height={32} />
+              </a>
+              <a href="tel:063 454 44 55">
+                <Image src="/images/call.svg" alt="call" width={32} height={32} />
+              </a>
+            </div>
+            <Formik
+              initialValues={initialValues}
+              onSubmit={handleSubmit}
+              validationSchema={validationSchema}
+            >
+              {({ errors, touched }) => {
+                const isReady = Object.keys(errors).length === 0;
 
-              return (
-                <Form className={styles.form}>
-                  <div className={styles.formElem}>
-                    <Field
-                      type="text"
-                      name="phone"
-                      className={cn(
-                        styles.formElemInput,
-                        errors.phone && touched.phone ? styles.formElemInputError : '',
-                      )}
-                      placeholder={t('phoneNumber')}
-                    />
-                  </div>
-                  <Buttons
-                    className={styles.formBtn}
-                    type="submit"
-                    load={isLoad}
-                    disabled={!isReady}
-                  >
-                    {t('callMe')}
-                  </Buttons>
-                </Form>
-              );
-            }}
-          </Formik>
+                return (
+                  <Form className={styles.form}>
+                    <div className={styles.formElem}>
+                      <Field
+                        type="text"
+                        name="phone"
+                        className={cn(
+                          styles.formElemInput,
+                          errors.phone && touched.phone ? styles.formElemInputError : '',
+                        )}
+                        placeholder={t('phoneNumber')}
+                      />
+                    </div>
+                    <Buttons
+                      className={styles.formBtn}
+                      type="submit"
+                      load={isLoad}
+                      disabled={!isReady}
+                    >
+                      {t('callMe')}
+                    </Buttons>
+                  </Form>
+                );
+              }}
+            </Formik>
+          </div>
         </div>
       </div>
-    </div>
+      <Modal
+        onHide={() => setModalVisible({ ...modalVisible, visible: false })}
+        visible={modalVisible['visible']}
+        status={modalVisible['status']}
+      />
+    </>
   );
 };
 export default Footer;
