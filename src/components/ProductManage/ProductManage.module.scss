@@ -63,6 +63,15 @@
     @include for-desktop-up {
       padding: 32px;
     }
+
+    &Image {
+      padding: 13px 13px 5px;
+      img {
+        width: 100%;
+        max-width: 168px;
+        height: auto;
+      }
+    }
   }
 
   &ItemTitle {

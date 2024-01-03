@@ -40,7 +40,7 @@ const Benefits = ({ translation }) => {
                 key={title}
               >
                 <div className={styles.benefitsItem}>
-                  <h4>{title}</h4>
+                  <h4 dangerouslySetInnerHTML={{ __html: title }}/>
                   <p dangerouslySetInnerHTML={{ __html: caption }} />
                 </div>
               </motion.div>

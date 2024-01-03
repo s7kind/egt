@@ -64,6 +64,14 @@
       @include for-desktop-up {
         font-size: 32px;
       }
+
+      br {
+        display: none;
+
+        @include for-desktop-up {
+          display: block;
+        }
+      }
     }
 
     p {
@@ -77,6 +85,7 @@
       @include for-desktop-up {
         margin-top: 16px;
         font-size: 16px;
+        max-width: 778px;
       }
     }
   }

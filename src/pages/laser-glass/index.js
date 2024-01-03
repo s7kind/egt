@@ -31,15 +31,9 @@ const LaserGlass = ({ locale }) => {
         <meta name="description" content={t('metaDescription')} />
       </Head>
       <ProductHero translation="laserGlass" />
-      <ProductTabs translation="laserGlass" />
-      <ProjectsSection />
+      <ProductUsing translation="laserGlass" />
       <Benefits translation="laserGlass" />
       <Expense />
-      <ProductUsing translation="laserGlass" />
-      <ProductManage translation="laserGlass" />
-      <ProductTech translation="laserGlass" />
-      <Expense />
-      <Faq translation="laserGlass" />
     </>
   );
 };

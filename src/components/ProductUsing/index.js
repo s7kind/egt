@@ -10,16 +10,17 @@ const ProductUsing = ({ translation }) => {
   const size = list.length;
 
   return (
-    <section className={styles.using} id='using'>
+    <section className={styles.using} id="using">
       <div className={cn('wrapper', [styles.usingWrapper])}>
         <h3 className={styles.usingTitle}>{t('using.title')}</h3>
         <div className={cn(styles.usingList, { [styles.fullFirst]: size === 3 })}>
-          {list.map(({ image, title }, index) => (
+          {list.map(({ image, title, caption }, index) => (
             <div className={styles.usingItem} key={index}>
               <div className={styles.usingImage}>
                 <Image src={image} alt={title} width={1000} height={1000} />
               </div>
               <h5 className={styles.usingItemTitle}>{title}</h5>
+              {!!caption && <p className={styles.usingItemCaption}>{caption}</p>}
             </div>
           ))}
         </div>

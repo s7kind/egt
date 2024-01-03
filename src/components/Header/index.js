@@ -22,7 +22,6 @@ const roboto = Roboto({
 
 const Header = () => {
   const { t } = useTranslation('header');
-
   const [isOpen, setIsOpen] = useState(false);
   const dropDownRef = useRef(null);
 

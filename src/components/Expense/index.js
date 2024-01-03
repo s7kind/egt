@@ -20,18 +20,18 @@ const Expense = () => {
   const initialValues = {
     fullName: '',
     phone: '',
-    type: '',
+    // type: '',
     callType: '',
   };
 
   const validationSchema = Yup.object().shape({
     fullName: Yup.string().required(t('form.required')),
     phone: Yup.string().required(t('form.required')).matches(phoneRegExp, t('form.phoneValid')),
-    type: Yup.string().required(t('form.required')),
+    // type: Yup.string().required(t('form.required')),
     callType: Yup.string().required(t('form.required')),
   });
 
-  const handleSubmit = async (values, { setSubmitting, resetForm, setErrors }) => {
+  const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     try {
       setIsLoad(true);
 
@@ -104,7 +104,7 @@ const Expense = () => {
                         placeholder={t('form.phone')}
                       />
                     </div>
-                    <div className={cn(styles.formElem, styles.formElemArrow)}>
+                    {/* <div className={cn(styles.formElem, styles.formElemArrow)}>
                       <Field
                         as="select"
                         name="type"
@@ -112,7 +112,6 @@ const Expense = () => {
                           styles.formElemSelect,
                           errors.type && touched.type ? styles.formElemSelectError : '',
                         )}
-                        // value={''}
                       >
                         <option value={''} disabled>
                           {t('form.type')}
@@ -122,7 +121,7 @@ const Expense = () => {
                         <option value="Print Glass">Print Glass</option>
                         <option value="Laser Glass">Laser Glass</option>
                       </Field>
-                    </div>
+                    </div> */}
                   </div>
                   <div className={styles.formGroupCallType}>
                     <div className={styles.formRadioGroup} role="group" aria-labelledby="callType">
